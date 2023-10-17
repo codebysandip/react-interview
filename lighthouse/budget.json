@@ -1,0 +1,23 @@
+[
+  {
+    "paths": "/*",
+    "timings": [
+      {
+        "metric": "interactive",
+        "budget": 1500
+      },
+      {
+        "metric": "installable-manifest",
+        "budget": 1
+      },
+      {
+        "metric": "cumulative-layout-shift",
+        "budget": 0
+      },
+      {
+        "metric": "first-contentful-paint",
+        "budget": 1
+      }
+    ]
+  }
+]

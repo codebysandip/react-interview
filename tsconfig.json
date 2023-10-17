@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "outDir": "./build/ts/",
+    "typeRoots": ["./node_modules/@types", "./typings"],
+    "lib": ["ES2020", "DOM", "WebWorker"],
+    "baseUrl": "./",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noEmitOnError": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "ESNext",
+    "strict": true,
+    "moduleResolution": "Node",
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "allowJs": true,
+    "target": "ES2017",
+    "jsx": "react-jsx",
+    "paths": {
+      "src/*": ["src/*"],
+      "pages/*": ["src/pages/*"],
+      "core/*": ["src/core/*"],
+      "component/*": ["src/core/components/*"],
+      "assets/*": ["src/assets/*"],
+      "mocks/*": ["mocks/*"],
+      "tests/*": ["__tests__/*"],
+      "examples/*": ["examples/*"]
+    },
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules", "build"],
+  "ts-node": {
+    "experimentalSpecifierResolution": "node",
+    "esm": true
+  }
+}

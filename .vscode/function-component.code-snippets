@@ -1,0 +1,68 @@
+{
+  "Function Page Component Snippet": {
+    "prefix": "fpcomp",
+    "description": "Snippet to create page functional component",
+    "scope": "typescriptreact",
+    "body": [
+      "import { useAppSelector } from \"core/hook.js\";",
+      "import { ContextDataWithStore } from \"core/models/context-with-store.model.js\";",
+      "import ${1/(.)/${1:/capitalize}/}Reducer, { fetch${1/(.)/${1:/capitalize}/}PageData } from \"./${1}.redux.js\";",
+      "",
+      "// eslint-disable-next-line @typescript-eslint/no-unused-vars",
+      "export default function ${1/(.)/${1:/capitalize}/}Page(props: ${1/(.)/${1:/capitalize}/}PageProps) {",
+      "  const pageData = useAppSelector((state) => state.home.pageData);",
+      "",
+      "  return <h1>${1/(.)/${1:/capitalize}/} Page</h1>;",
+      "}",
+      "",
+      "export interface ${1/(.)/${1:/capitalize}/}PageProps {}",
+      "",
+      "export const getInitialProps = (ctx: ContextDataWithStore) => {",
+      "  return ctx.store.dispatch(fetch${1/(.)/${1:/capitalize}/}PageData());",
+      "};",
+      "",
+      "export const reducer = {",
+      "  ${1}: ${1/(.)/${1:/capitalize}/}Reducer,",
+      "};"
+    ]
+  },
+  "Function Normal Component": {
+    "prefix": "fcomp",
+    "description": "Snippet to create functional component",
+    "scope": "typescriptreact",
+    "body": [
+      "export function ${1}(props: ${1}Props) {",
+      "  const { ${3} } = props;",
+      "",
+      "  return (",
+      "    ${4}",
+      "  );",
+      "}",
+      "",
+      "export interface ${1}Props {",
+      "  ${2}",
+      "}"
+    ]
+  },
+  "Function Component with redux": {
+    "prefix": "frcomp",
+    "description": "Snippet to create functional component with redux",
+    "scope": "typescriptreact",
+    "body": [
+      "import { useAppSelector } from \"core/hook.js\";",
+      "",
+      "export function ${1}(props: ${1}Props) {",
+      "  const ${5} = useAppSelector(state => state.${4});",
+      "  const { ${3} } = props;",
+      "",
+      "  return (",
+      "    ${4}",
+      "  );",
+      "}",
+      "",
+      "export interface ${1}Props {",
+      "  ${2}",
+      "}"
+    ]
+  }
+}

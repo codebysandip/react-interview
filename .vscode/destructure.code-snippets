@@ -1,0 +1,10 @@
+{
+	"Destructure": {
+		"scope": "javascript,typescript,typescriptreact",
+		"prefix": "destructure",
+		"body": [
+			"const { $2, $3 } = $1;",
+		],
+		"description": "Es6 destructure"
+	}
+}

@@ -1,0 +1,52 @@
+name: Build & Test
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run test with Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - name: Cypress.io
+        uses: cypress-io/github-action@v4.2.0
+        with:
+          install: npm ci
+          start: npm test
+          wait-on: http://localhost:7000
+          command: npm test
+      # - name: Codecov upload coverage
+      #   uses: codecov/codecov-action@v3.1.1
+      #   with:
+      #     name: Cypress with Jest Coverage
+      # - name: Lighthouse Score
+      #   run: node lighthouse/lighthouse-score.js
+
+      # - name: Upload lighthouse score svg as gist
+      #   uses: exuanbo/actions-deploy-gist@v1
+      #   with:
+      #     token: ${{ secrets.PAT }}
+      #     gist_id: 9b7d7703eec1c6d1352ac9a437aa5f10
+      #     file_path: lighthouse/pagespeed.svg
+      #     file_type: svg
+      # - name: Upload lighthouse score json as gist
+      #   uses: exuanbo/actions-deploy-gist@v1
+      #   with:
+      #     token: ${{ secrets.PAT }}
+      #     gist_id: 431d33b9aa603674249d0561301c93c9
+      #     file_path: lighthouse/report.json
+      #     file_type: json

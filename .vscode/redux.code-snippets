@@ -1,0 +1,43 @@
+{
+	"Redux": {
+		"prefix": "slice",
+		"scope": "typescript",
+		"description": "@reduxjs/toolkit slice",
+		"body": [
+			"import { PayloadAction } from \"@reduxjs/toolkit\";",
+			"import { GetState, ThunkApi } from \"src/core/models/common.model.js\";",
+			"import { AppDispatch } from \"src/redux/create-store.js\";",
+			"import { createSlice } from \"src/redux/redux.imports.js\";",
+			"import { ${1/(.)/${1:/capitalize}/}PageData } from \"./${1}${4}.model.js\";",
+			"",
+			"export interface ${1/(.)/${1:/capitalize}/}State {",
+			"  pageData: ${1/(.)/${1:/capitalize}/}PageData | null;",
+			"}",
+			"",
+			"const initialState: ${1/(.)/${1:/capitalize}/}State = {",
+			"  pageData: null,",
+			"};",
+			"",
+			"const ${1}Slice = createSlice({",
+			"  name: \"${1}\",",
+			"  initialState,",
+			"  reducers: {",
+			"    ${1}PageDataLoaded: (state, action: PayloadAction<${1/(.)/${1:/capitalize}/}PageData | null>) => {",
+			"      state.pageData = action.payload;",
+			"    },",
+			"  },",
+			"});",
+			"",
+			"export const { ${1}PageDataLoaded } = ${1}Slice.actions;",
+			"export default ${1}Slice.reducer;",
+			"",
+			"export const fetch${1/(.)/${1:/capitalize}/}PageData = ($3) => {",
+			"  return async (dispatch: AppDispatch, _getState: GetState, api: ThunkApi) => {",
+			"    const apiResponse = await api.get<${1/(.)/${1:/capitalize}/}PageData>(`/api/$2`);",
+			"    dispatch(${1}PageDataLoaded(apiResponse.data));",
+			"    return apiResponse;",
+			"  };",
+			"};"
+		]
+	}
+}
