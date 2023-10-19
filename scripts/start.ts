@@ -40,7 +40,7 @@ middlewares.push(
   WebpackDevMiddleware(compiler, {
     publicPath: webpackConfig.output.publicPath,
     serverSideRender: false,
-    writeToDisk: false, // assign true only if need to check on local that build publishing file or not but performance will decrease
+    writeToDisk: true, // assign true only if need to check on local that build publishing file or not but performance will decrease
   }),
 );
 
